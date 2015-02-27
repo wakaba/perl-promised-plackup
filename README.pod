@@ -1,1 +1,1 @@
-lib/Test/AnyEvent/plackup.pod
+lib/Promised/Plackup.pod
