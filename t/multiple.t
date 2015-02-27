@@ -1,58 +1,78 @@
 use strict;
 use warnings;
-use Path::Class;
-use lib file(__FILE__)->dir->parent->subdir('lib')->stringify;
-use lib glob file(__FILE__)->dir->parent->subdir('t_deps', 'modules', '*', 'lib')->stringify;
+use Path::Tiny;
+use lib glob path (__FILE__)->parent->parent->child ('t_deps/modules/*/lib');
 use Test::X1;
 use Test::More;
-use Test::AnyEvent::plackup;
-use AnyEvent;
+use Promised::Plackup;
 use Web::UserAgent::Functions qw(http_get);
 
-test {
-    my $c = shift;
+my $PlackupPath = path (__FILE__)->parent->parent->child ('plackup');
 
-    my $code = q{
-        return sub {
-            return [200, ['Content-Type' => 'text/plain'], ['hoge fuga']];
+sub GET (&$$$) {
+  my ($code, $plackup, $path, $c) = @_;
+  return Promise->new (sub {
+    my ($ok, $ng) = @_;
+    my $host = $plackup->get_host;
+    http_get
+        url => qq<http://$host$path>,
+        anyevent => 1,
+        cb => sub {
+          my $res = $_[1];
+          test {
+            $ok->($code->($res));
+          } $c;
         };
+  });
+} # GET
+
+test {
+  my $c = shift;
+
+  my $code = q{
+    return sub {
+      return [200, ['Content-Type' => 'text/plain'], ['hoge fuga']];
     };
+  };
 
-    my $server1 = Test::AnyEvent::plackup->new;
-    $server1->set_app_code($code);
-    my ($start_cv1) = $server1->start_server;
+  my $server1 = Promised::Plackup->new;
+  $server1->set_app_code ($code);
+  my $p1 = $server1->start;
 
-    my $server2 = Test::AnyEvent::plackup->new;
-    $server2->set_app_code($code);
-    my ($start_cv2) = $server2->start_server;
+  my $server2 = Promised::Plackup->new;
+  $server2->set_app_code ($code);
+  my $p2 = $server2->start;
 
-    my $cv = AE::cv;
-    $cv->begin;
-
-    for ([$start_cv1, $server1], [$start_cv2, $server2]) {
-        my ($start_cv, $server) = @$_;
-        $cv->begin;
-        $start_cv->cb(sub {
-            test {
-                my $port = $server->port;
-                http_get url => qq<http://localhost:$port/>, anyevent => 1, cb => sub {
-                    my (undef, $res) = @_;
-                    test {
-                        is $res->code, 200;
-                        $cv->end;
-                    } $c;
-                };
-            } $c;
-        });
-    }
-
-    $cv->end;
-    $cv->cb(sub {
+  my @p;
+  for ([$p1, $server1], [$p2, $server2]) {
+    my ($p, $server) = @$_;
+    push @p, $p->then (sub {
+      return GET {
+        my $res = $_[0];
         test {
-            done $c;
-            undef $c;
+          is $res->code, 200;
         } $c;
+      } $server, q</>, $c;
     });
+  }
+
+  Promise->all (\@p)->then (sub {
+    return Promise->all ([$server1->stop, $server2->stop]);
+  })->then (sub {
+    done $c;
+    undef $c;
+  });
 } n => 2;
 
 run_tests;
+
+=head1 LICENSE
+
+Copyright 2010-2012 Hatena <http://www.hatena.ne.jp/>.
+
+Copyright 2015 Wakaba <wakaba@suikawiki.org>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

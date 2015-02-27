@@ -1,6 +1,7 @@
-Path::Class
+Path::Tiny
 Plack
 Starlet
 Starman
 Test::More
 Twiggy
+Twiggy::Prefork

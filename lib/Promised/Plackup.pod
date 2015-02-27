@@ -1,185 +1,207 @@
 =head1 NAME
 
-Test::AnyEvent::plackup - Starting HTTP server by |plackup| command for tests
+Promised::Plackup - Controlling an HTTP server by the |plackup| command
 
 =head1 SYNOPSIS
 
-  use Test::AnyEvent::plackup;
+  use Promised::Plackup;
   
-  $server = Test::AnyEvent::plackup->new;
-  $server->app('path/to/server.psgi');
-  $server->server('Starlet');
+  $server = Promised::Plackup->new;
+  $server->set_app_code (q{ return ... });
+  $server->server ('Starlet');
+  $server->set_option ('--host' => '127.0.0.1');
   
-  ($start_cv, $stop_cv) = $server->start_server;
-  
-  $start_cv->cb(sub {
-      warn "Started";
-      $url = 'http://localhost:' . $server->port . '/';
-      ... get $url;
-      $server->stop_server;
-  });
-  
-  $stop_cv->cb(sub {
-      warn "Stopped";
+  $server->start->then (sub {
+    my $host = $server->get_host;
+    GET qq<http://$host/> ...;
+  }, sub {
+    warn "Server error: |$_[0]|";
+  })->then (sub {
+    return $server->stop;
   });
 
 =head1 DESCRIPTION
 
-The C<Test::AnyEvent::plackup> module invokes the C<plackup> command
-of L<Plack> with specified options.  It might be useful for testing
-your PSGI Web applications, or applications that requires access to
-some Web applications.
+The C<Promised::Plackup> module invokes the C<plackup> command of
+L<Plack> with specified options and return a L<Promise> object which
+is resolved once the server is ready to accept HTTP requests.  It
+might be useful for testing your PSGI Web applications, or
+applications that requires access to some Web applications.
 
 =head1 METHODS
 
-The module exposes following methods:
+The class has following methods:
 
 =over 4
 
-=item $server = Test::AnyEvent::plackup->new
+=item $server = Promised::Plackup->new
 
 Create a new instance of the class.
 
-=item $server->perl($path)
+=item $promise = $server->start
 
-Set the path to the C<perl> command to invoke.  If none of C<perl> and
-C<perl_inc> is explicitly specified, the C<plackup> command is
-directly invoked.
+Start the C<plackup> command.  The method returns a L<Promise> object,
+which is resolved after the server starts to accept HTTP requests.  If
+the server does not start accepting connections, the promise is
+rejected.
 
-=item $server->perl_inc([$path1, $path2, ...])
+=item $promise = $server->stop
 
-Set the array reference containing the paths used as additional
-C<@INC> paths (by specifying the C<-I> option to the C<perl> command).
-Default is the empty array referece.
+Stop the C<plackup> command.  The method returns a L<Promise> object,
+which is resolved after the server is terminated.
 
-=item $server->perl_options([OPTIONS...]);
+Note that this method must be invoked before the references to
+C<$server> are discarded.
 
-Set the array reference containing additional options to the C<perl>
-command.  Default is the empty array reference.
-
-=item $server->plackup($path)
+=item $server->plackup ($path)
 
 Set the path to the C<plackup> command to invoke.  Default is
 C<plackup> (without path, i.e. search from C<PATH>).
 
-=item $server->app($path)
+It can be the real C<plackup> command, or an alternative command
+(e.g. wrapper shell script) whose command-line options are compatible
+with C<plackup>.
 
-Set the path to the PSGI application file.  It is used as the value of
-the C<--app> option to the C<plackup> command.  Nothing by default.
+This method must be invoked before the C<start> method is invoked.
 
-=item $server->set_app_code($code_as_string)
+=item $server->set_app_code ($code_as_string)
 
 Set the Perl script code used as PSGI application.  The code must be
-passed as a character string.  It is written into a temporary file and
-then passed to the C<plackup> command.
+passed as a character string.  It is equivalent to the C<-e> option to
+the C<plackup> command.
 
-=item $server->server($server_module)
+This method must be invoked before the C<start> method is invoked.
 
-Set the server module used by the C<plackup> command.  It is
-equivalent to specifying the C<--server> option to the C<plackup>
-command.
+=item $server->server ($server_module)
 
-=item $port = $server->port
+Set the server module used by the C<plackup> command, such as
+C<Starlet> or C<Twiggy::Prefork>.  It is equivalent to the C<--server>
+option to the C<plackup> command.
 
-=item $server->port($port)
+This method must be invoked before the C<start> method is invoked.
 
-Get or set the port the C<plackup>'s server should listen.  If it is
-not specified by the application, a random unused ephemeral port is
-assigned by the module.
-
-=item $server->set_option(NAME => VALUE)
+=item $server->set_option (NAME => VALUE)
 
 Set the command-line option to the C<plackup> command to the specified
 value.  Any previously specified value for the option is removed.
 
-=item $server->set_option(NAME => VALUE)
+This method must be invoked before the C<start> method is invoked.
+
+=item $server->set_option (NAME => VALUE)
 
 Add the command-line option to the C<plackup> command with the
 specified value.  Any previously specified value for the option
-remains unchanged.  Order between options with same names are
+remains unchanged.  Order of option values with same names are
 preserved.
 
-=item $server->set_env(NAME => VALUE)
+This method must be invoked before the C<start> method is invoked.
 
-Set the environment variable with specified name and value.  Any
-existing variable with same name is overridden.  If the value is
-C<undef>, the variable is unset.
+=item $hashref = $server->envs
 
-By default, the currently set environent variables (i.e. C<%ENV>) are
-used.
+Return the environment variables for the C<plackup> command as a
+reference to the hash of environment name/value byte string pairs.
 
-=item $server->onstdout($code)
+If a value is specified in the hash, an environment variable is set.
+Otherwise, if an C<undef> value is explicitly specified in the hash,
+the environment variable, if any, is unset.  Otherwise, any
+environment variable of the main process is left unchanged.  This
+method must be invoked before the C<start> method is invoked.
 
-Specify the callback function that is invoked when a chunk is received
-from the standard output of the C<plackup> command.  The callback is
-invoked with an argument, which is the received chunk, or C<undef> for
-end of stream.  The callback is not expected to throw any exception.
-It must be specified before invocation of the C<start_server> method.
-By default, the standard output of the C<plackup> command is connected
-to the C<STDOUT>.
+=item $server->stdout (SCALARREF)
 
-=item $server->onstderr($code)
+=item $server->stdout (CODE)
 
-Specify the callback function that is invoked when a chunk is received
-from the standard error output of the C<plackup> command.  The
-callback is invoked with an argument, which is the received chunk, or
-C<undef> for end of stream.  The callback is not expected to throw any
-exception.  It must be specified before invocation of the
-C<start_server> method.  By default, the standard error output of the
-C<plackup> command is connected to the C<STDERR>.
+=item $server->stderr (SCALARREF)
+
+=item $server->stderr (CODE)
+
+Specify how the standard output or the standard error output is
+handled.  If a scalar reference is specified, the output is set to the
+scalar value.  If a code reference is specified, the code is invoked
+with a chunk as the argument whenever the chunk is available, and with
+an C<undef> as the argument when the end of the output is reached.
+
+This method must be invoked before the C<start> method is invoked.  If
+this method is not invoked, the standard input is left unchanged
+(i.e. same as the standard output or the standard error output of the
+main process).
+
+=item $time = $server->start_timeout
+
+=item $server->start_timeout ($time)
+
+Get or set the timeout for the C<start>, i.e. the maximum time
+interval between the invocation of the C<plackup> command and the
+initial acception of an HTTP request by the server.
+
+This method must be invoked before the C<start> method is invoked.
 
 =item $pid = $server->pid
 
-Return the process ID of the C<plackup> process.  It returns C<undef>
-if the command is not executed yet.
+Return the process ID of the server('s root) process.
 
-=item ($start_cv, $end_cv) = $server->start_server
+This method can be invoked after the C<start> promise is resolved.
+Note that there can no longer be the process with the ID or can be a
+different process with the ID if the process has terminated.
 
-Run the C<plackup> command with the options.  The method return two
-AnyEvent condvars.  The first condvar's callback is invoked when the
-server process has been started and the application can connect to the
-port.  The second condvar's callback is invoked when the server
-process has been stopped.
+=item $boolean = $server->running
 
-=item $server->stop_server
+Return whether the server('s root) process is running or not.  Note
+that this is not necessarily equivalent to whether the server is
+accepting HTTP connections or not.
 
-Stop the C<plackup> process.  This method must be invoked after the
-C<start_server> method invocation.
+=item $int = $server->get_port
+
+Return the port number the server is listening.  This method must be
+invoked after the C<start> promise is resolved.
+
+Unless a port number is explicitly specified by C<<
+$server->set_option ('--port' => $port) >>, a random unused port is
+assigned.
+
+=item $string = $server->get_hostname
+
+Return the host name the server is listening.  This method must be
+invoked after the C<start> promise is resolved.
+
+Unless a port number is explicitly specified, the host name is
+defaulted to C<127.0.0.1>.  If a port number is explicitly specified,
+the host name should also be explicitly specified.
+
+=item $string = $server->get_host
+
+Return the host name, followed by C<:>, followed by the port the
+server is listening.  This method must be invoked after the C<start>
+promise is resolved.
 
 =back
 
 =head1 DEPENDENCY
 
-The module requires Perl 5.8 or later, as well as L<Plack> and
-L<AnyEvent>.
+The module requires Perl 5.10 or later.
 
-=head1 DEVELOPMENT
+The module requires L<Promise>
+<https://github.com/wakaba/perl-promise>, L<Promised::Command>
+<https://github.com/wakaba/perl-promised-command>, and L<AnyEvent>.
 
-Latest version of the module is available at the GitHub repository:
-<https://github.com/wakaba/perl-test-anyevent-plackup>.
-
-The module is tested at Travis CI:
-<http://travis-ci.org/wakaba/perl-test-anyevent-plackup>.
-
-Tarball for the module is available at
-<http://wakaba.github.com/packages/perl/#Test-AnyEvent-plackup> but it
-is likely outdated.  Use of GitHub version is always recommended.
+The module also requires the C<plackup> command or equivalent,
+obviously.
 
 =head1 SEE ALSO
 
-L<Plack>, L<AnyEvent>.
+plackup <http://search.cpan.org/dist/Plack/script/plackup>,
+<https://github.com/plack/Plack/blob/master/script/plackup>.
 
-The <https://github.com/wakaba/perl-test-anyevent-servers> repository
-contain the module showing how to combine this module with test
-modules for other kinds of servers such as MySQL server.
+=head1 AUTHOR
 
-=head1 AUTHORS
-
-Wakaba <wakabatan@hatena.ne.jp>.
-
-motemen.
+Wakaba <wakaba@suikawiki.org>.
 
 =head1 ACKNOWLEDGEMENTS
+
+The module derived from L<Test::AnyEvent::plackup>
+<https://github.com/wakaba/perl-test-anyevent-plackup>, whose authors
+are Wakaba <wakabatan@hatena.ne.jp> and motemen.  Thanks also to
+hatz48.
 
 Part of this module derived from L<Net::TCP::FindPort>
 <https://github.com/wakaba/perl-net-tcp-findport>.
@@ -187,6 +209,8 @@ Part of this module derived from L<Net::TCP::FindPort>
 =head1 LICENSE
 
 Copyright 2010-2012 Hatena <http://www.hatena.ne.jp/>.
+
+Copyright 2015 Wakaba <wakaba@suikawiki.org>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

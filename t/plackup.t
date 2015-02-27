@@ -1,249 +1,248 @@
 use strict;
 use warnings;
-use Path::Class;
-use lib file(__FILE__)->dir->parent->subdir('lib')->stringify;
-use lib glob file(__FILE__)->dir->parent->subdir('t_deps', 'modules', '*', 'lib')->stringify;
+use Path::Tiny;
+use lib glob path (__FILE__)->parent->parent->child ('t_deps/modules/*/lib');
 use Test::X1;
 use Test::More;
-use Test::AnyEvent::plackup;
+use Promised::Plackup;
 use Web::UserAgent::Functions qw(http_get);
 
-test {
-    my $c = shift;
+my $PlackupPath = path (__FILE__)->parent->parent->child ('plackup');
 
-    my $server = Test::AnyEvent::plackup->new;
-    is_deeply $server->get_command, [
-        'perl',
-        '-I' . file(__FILE__)->dir->parent->subdir('lib'),
-        do { my $v = `which plackup` || 'plackup'; chomp $v; $v },
-        '--port' => $server->port,
-    ];
-
-    done $c;
-} name => 'command default';
-
-test {
-    my $c = shift;
-
-    my $server = Test::AnyEvent::plackup->new;
-    $server->plackup('hoge/plackup');
-    $server->app('path/to/app.psgi');
-    $server->port(1244);
-    $server->server('Twiggy');
-    is_deeply $server->get_command, [
-        'perl',
-        '-I' . file(__FILE__)->dir->parent->subdir('lib'),
-        'hoge/plackup',
-        '--app' => 'path/to/app.psgi',
-        '--port' => 1244,
-        '--server' => 'Twiggy',
-    ];
-
-    done $c;
-} name => 'command non-default';
-
-test {
-    my $c = shift;
-
-    my $server = Test::AnyEvent::plackup->new;
-    $server->perl('path/to/perl');
-    is_deeply $server->get_command, [
-        'path/to/perl',
-        '-I' . file(__FILE__)->dir->parent->subdir('lib'),
-        do { my $v = `which plackup` || 'plackup'; chomp $v; $v },
-        '--port' => $server->port,
-    ];
-
-    done $c;
-} name => 'command perl';
-
-test {
-    my $c = shift;
-
-    my $server = Test::AnyEvent::plackup->new;
-    $server->perl_inc(['path1', 'path2']);
-    is_deeply $server->get_command, [
-        'perl',
-        '-Ipath1', '-Ipath2',
-        '-I' . file(__FILE__)->dir->parent->subdir('lib'),
-        do { my $v = `which plackup` || 'plackup'; chomp $v; $v },
-        '--port' => $server->port,
-    ];
-
-    done $c;
-} name => 'command perl lib';
-
-test {
-    my $c = shift;
-
-    my $server = Test::AnyEvent::plackup->new;
-    $server->perl('hoge');
-    $server->perl_inc(['path1', 'path2']);
-    is_deeply $server->get_command, [
-        'hoge',
-        '-Ipath1', '-Ipath2',
-        '-I' . file(__FILE__)->dir->parent->subdir('lib'),
-        do { my $v = `which plackup` || 'plackup'; chomp $v; $v },
-        '--port' => $server->port,
-    ];
-
-    done $c;
-} name => 'command perl and lib';
-
-test {
-    my $c = shift;
-
-    my $code = q{
-        use strict;
-        use warnings;
-        return sub {
-            return [200, ['Content-Type' => 'text/plain'], ['hoge fuga']];
+sub GET (&$$$) {
+  my ($code, $plackup, $path, $c) = @_;
+  return Promise->new (sub {
+    my ($ok, $ng) = @_;
+    my $host = $plackup->get_host;
+    http_get
+        url => qq<http://$host$path>,
+        anyevent => 1,
+        cb => sub {
+          my $res = $_[1];
+          test {
+            $ok->($code->($res));
+          } $c;
         };
+  });
+} # GET
+
+for my $server (undef, 'Starman', 'Starlet', 'Twiggy', 'Twiggy::Prefork') {
+  test {
+    my $c = shift;
+    my $plackup = Promised::Plackup->new;
+    $plackup->plackup ($PlackupPath);
+    $plackup->set_server ($server);
+    $plackup->set_app_code (q{
+      return sub {
+        return [200, ['Content-Type' => 'text/plain'], ['hoge fuga']];
+      };
+    });
+    $plackup->start->then (sub {
+      return GET {
+        my $res = $_[0];
+        is $res->code, 200;
+        is $res->content, 'hoge fuga';
+      } $plackup, q</>, $c;
+    })->then (sub { return $plackup->stop })
+      ->then (sub { done $c; undef $c });
+  } n => 2, name => $server;
+}
+
+test {
+  my $c = shift;
+  my $plackup = Promised::Plackup->new;
+  $plackup->plackup ('bad/plackup/command/' . rand);
+  $plackup->set_app_code (q{
+    return sub {
+      return [200, ['Content-Type' => 'text/plain'], ['hoge fuga']];
     };
-
-    my $server = Test::AnyEvent::plackup->new;
-    $server->set_app_code($code);
-    ok $server->app;
-
-    my $f = file($server->app);
-    is scalar $f->slurp, $code;
-
-    undef $server;
-    ok !-f $f;
-
-    done $c;
-} name => 'set_app_code';
+  });
+  $plackup->start->then (sub {
+    test {
+      ok 0;
+    } $c;
+  }, sub {
+    my $result = $_[0];
+    test {
+      like $result, qr{Server failed to start};
+    } $c;
+  })->then (sub { return $plackup->stop })
+    ->then (sub { done $c; undef $c });
+} n => 1, name => 'bad plackup command';
 
 test {
-    my $c = shift;
+  my $c = shift;
+  my $plackup = Promised::Plackup->new;
+  $plackup->plackup ($PlackupPath);
+  $plackup->set_app_code (q{
+    die;
+  });
+  $plackup->start->then (sub {
+    test {
+      ok 0;
+    } $c;
+  }, sub {
+    my $result = $_[0];
+    test {
+      like $result, qr{Server does not start|Server failed to start};
+    } $c;
+  })->then (sub { return $plackup->stop })
+    ->then (sub { done $c; undef $c });
+} n => 1, name => 'bad application server';
 
-    my $code = q{
-        use strict;
-        use warnings;
-        return sub {
-            return [200, ['Content-Type' => 'text/plain'], ['hoge fuga']];
-        };
+test {
+  my $c = shift;
+  my $plackup = Promised::Plackup->new;
+  $plackup->plackup ($PlackupPath);
+  $plackup->set_app_code (q{
+    return sub {
+      exit;
     };
-
-    my $server = Test::AnyEvent::plackup->new;
-    $server->set_app_code($code);
-
-    my $cv = AE::cv;
-    $cv->begin(sub { $_[0]->send });
-
-    my ($start_cv, $end_cv) = $server->start_server;
-
-    $cv->begin;
-    my $port = $server->port;
-    $start_cv->cb(sub {
-        test {
-            http_get 
-                url => qq<http://localhost:$port/>,
-                anyevent => 1,
-                cb => sub {
-                    my $res = $_[1];
-                    test {
-                        is $res->code, 200;
-                        $server->stop_server;
-                        $cv->end;
-                    } $c;
-                };
-        } $c;
-    });
-
-    $cv->begin;
-    $end_cv->cb(sub {
-        my $return = $_[0]->recv;
-        test {
-            is $return >> 8, 0;
-            http_get 
-                url => qq<http://localhost:$port/>,
-                anyevent => 1,
-                cb => sub {
-                    my $res = $_[1];
-                    test {
-                        like $res->code, qr/^59[56]$/;
-                        $cv->end;
-                    } $c;
-                };
-        } $c;
-    });
-
-    $cv->end;
-    $cv->cb(sub {
-        test {
-            done $c;
-        } $c;
-    });
-} name => 'server', n => 3;
+  });
+  $plackup->start->then (sub {
+    return GET {
+      my $res = $_[0];
+      isnt $res->code, 200;
+    } $plackup, q</>, $c;
+  })->then (sub { return $plackup->stop })
+    ->then (sub { done $c; undef $c });
+} n => 1;
 
 test {
-    my $c = shift;
-
-    my $server = Test::AnyEvent::plackup->new;
-    $server->app('hoge/fuga/notfound.psgi');
-
-    my $cv = AE::cv;
-    $cv->begin(sub { $_[0]->send });
-
-    my ($start_cv, $end_cv) = $server->start_server;
-
-    my $port = $server->port;
-    $start_cv->cb(sub {
-        test {
-            ok 0;
-        } $c;
-    });
-
-    $cv->begin;
-    $end_cv->cb(sub {
-        my $return = $_[0]->recv;
-        test {
-            ok $return >> 8;
-            http_get 
-                url => qq<http://localhost:$port/>,
-                anyevent => 1,
-                cb => sub {
-                    my $res = $_[1];
-                    test {
-                        like $res->code, qr/^59[56]$/;
-                        $cv->end;
-                    } $c;
-                };
-        } $c;
-    });
-
-    $cv->end;
-    $cv->cb(sub {
-        test {
-            undef $server;
-            done $c;
-        } $c;
-    });
-} name => 'server bad app', n => 2;
+  my $c = shift;
+  my $plackup = Promised::Plackup->new;
+  is $plackup->_cmd->{command}, 'plackup';
+  is_deeply $plackup->_cmd->{args}, [
+    '--host' => '127.0.0.1',
+    '--port' => $plackup->get_port,
+  ];
+  done $c;
+  undef $c;
+} n => 2, name => 'command default';
 
 test {
-    my $c = shift;
-    my $server = Test::AnyEvent::plackup->new;
+  my $c = shift;
+  my $plackup = Promised::Plackup->new;
+  $plackup->plackup ('hoge/plackup');
+  $plackup->set_option ('--app' => 'path/to/app.psgi');
+  $plackup->set_option ('--port' => 1244);
+  $plackup->set_server ('Twiggy');
+  is $plackup->_cmd->{command}, 'hoge/plackup';
+  is_deeply $plackup->_cmd->{args}, [
+    '--app' => 'path/to/app.psgi',
+    '--port' => 1244,
+    '--server' => 'Twiggy',
+  ];
+  done $c;
+  undef $c;
+} n => 2, name => 'command non-default';
 
-    my $path = $ENV{PATH};
-    
-    my %envs = ($server->envs);
-    is_deeply \%envs, {%ENV};
+test {
+  my $c = shift;
 
-    $server->set_env(PATH => 'hoge.fuga');
-    my %envs2 = ($server->envs);
-    is_deeply \%envs2, {%ENV, PATH => 'hoge.fuga'};
-    is $envs2{PATH}, 'hoge.fuga';
+  my $code = q{
+    use strict;
+    use warnings;
+    return sub {
+      return [200, ['Content-Type' => 'text/plain'], ['hoge fuga']];
+    };
+  };
 
-    $server->set_env(PATH => undef);
-    my %envs3 = ($server->envs);
-    is_deeply \%envs3, {%ENV, PATH => undef};
-    is $envs3{PATH}, undef;
+  my $plackup = Promised::Plackup->new;
+  $plackup->set_app_code ($code);
 
-    is $ENV{PATH}, $path;
+  is $plackup->_cmd->{command}, 'plackup';
+  is_deeply $plackup->_cmd->{args}, [
+    '--host' => '127.0.0.1',
+    '--port' => $plackup->get_port,
+    '-e' => $code,
+  ];
 
+  done $c;
+  undef $c;
+} n => 2, name => 'set_app_code';
+
+test {
+  my $c = shift;
+
+  my $code = q{
+    use strict;
+    use warnings;
+    return sub {
+      return [200, ['Content-Type' => 'text/plain'], ['hoge fuga']];
+    };
+  };
+
+  my $plackup = Promised::Plackup->new;
+  $plackup->plackup ($PlackupPath);
+  $plackup->set_app_code ($code);
+
+  $plackup->start->then (sub {
+    return GET {
+      my $res = $_[0];
+      is $res->code, 200;
+    } $plackup, q</>, $c;
+  })->then (sub {
+    return $plackup->stop;
+  })->then (sub {
+    return GET {
+      my $res = $_[0];
+      like $res->code, qr/^59[56]$/;
+    } $plackup, q</>, $c;
+  })->then (sub {
     done $c;
-} name => 'envs', n => 6;
+    undef $c;
+  });
+} n => 2, name => 'server';
+
+test {
+  my $c = shift;
+  my $plackup = Promised::Plackup->new;
+  $plackup->plackup ($PlackupPath);
+  $plackup->set_option ('--app' => 'bad/psgi/path/' . rand);
+  $plackup->start->then (sub {
+    test {
+      ok 0;
+    } $c;
+  }, sub {
+    my $result = $_[0];
+    test {
+      like $result, qr{failed to start};
+    } $c;
+  })->then (sub { return $plackup->stop })
+    ->then (sub { done $c; undef $c });
+} n => 1, name => 'bad psgi path';
+
+test {
+  my $c = shift;
+  my $plackup = Promised::Plackup->new;
+  $plackup->plackup ($PlackupPath);
+  $plackup->set_app_code (q{
+    my $hoge = $ENV{HOGE};
+    return sub {
+      return [200, ['Content-Type' => 'text/plain'], [$hoge]];
+    };
+  });
+  $plackup->envs->{HOGE} = "ab \xFE";
+  $plackup->start->then (sub {
+    return GET {
+      my $res = $_[0];
+      is $res->code, 200;
+      is $res->content, "ab \xFE";
+    } $plackup, q</>, $c;
+  })->then (sub { return $plackup->stop })
+    ->then (sub { done $c; undef $c });
+} n => 2, name => 'envs';
 
 run_tests;
+
+=head1 LICENSE
+
+Copyright 2010-2012 Hatena <http://www.hatena.ne.jp/>.
+
+Copyright 2015 Wakaba <wakaba@suikawiki.org>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
