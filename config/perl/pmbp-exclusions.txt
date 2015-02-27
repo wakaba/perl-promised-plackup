@@ -1,0 +1,4 @@
+- "../../t_deps/modules/web-useragent-functions" tests
+- "../../t_deps/modules/test-x1" tests
+- "../../modules/promise" tests
+- "../../modules/promised-command" tests
