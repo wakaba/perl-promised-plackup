@@ -184,6 +184,7 @@ sub running ($) {
 sub start ($) {
   my $self = $_[0];
   my $cmd = $self->_cmd;
+  $self->{start_pid} = $$;
   return $cmd->run->then (sub {
     if ($cmd->running) {
       return _wait_server $self->get_hostname, $self->get_port, $self->start_timeout, $cmd;
@@ -219,7 +220,8 @@ sub stop ($) {
 
 sub DESTROY ($) {
   my $cmd = $_[0]->{cmd};
-  if (defined $cmd and $cmd->running) {
+  if (defined $cmd and $cmd->running and
+      defined $_[0]->{start_pid} and $_[0]->{start_pid} == $$) {
     $cmd->send_signal ($_[0]->_stop_signal);
   }
 } # DESTROY
