@@ -136,20 +136,6 @@ initial acception of an HTTP request by the server.
 
 This method must be invoked before the C<start> method is invoked.
 
-=item $pid = $server->pid
-
-Return the process ID of the server('s root) process.
-
-This method can be invoked after the C<start> promise is resolved.
-Note that there can no longer be the process with the ID or can be a
-different process with the ID if the process has terminated.
-
-=item $boolean = $server->running
-
-Return whether the server('s root) process is running or not.  Note
-that this is not necessarily equivalent to whether the server is
-accepting HTTP connections or not.
-
 =item $int = $server->get_port
 
 Return the port number the server is listening.  This method must be

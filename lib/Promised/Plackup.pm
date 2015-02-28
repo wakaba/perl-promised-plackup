@@ -133,14 +133,6 @@ sub get_host ($) { # XXX percent encode?
   return $_[0]->get_hostname . ':' . $_[0]->get_port;
 } # get_host
 
-sub pid ($) {
-  return $_[0]->_cmd->pid;
-} # pid
-
-sub running ($) {
-  return $_[0]->_cmd->running;
-} # running
-
 {
   use AnyEvent::Socket;
   my $Interval = 0.5;
