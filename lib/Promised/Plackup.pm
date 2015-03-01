@@ -113,6 +113,8 @@ sub _cmd ($) {
     $cmd->stdin ($self->stdin);
     $cmd->stdout ($self->stdout);
     $cmd->stderr ($self->stderr);
+    my $stop = $self->_stop_signal;
+    $cmd->propagate_signal ([[INT => $stop], [TERM => $stop], [QUIT => $stop]]);
     $cmd;
   };
 } # _cmd
