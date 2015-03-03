@@ -109,6 +109,14 @@ for my $server (undef, 'Starlet') {
     })->then (sub {
       return $cmd->wait->catch (sub { warn $_[0] });
     })->then (sub {
+      return Promise->new (sub {
+        my ($ok) = @_;
+        my $timer; $timer = AE::timer 0.5, 0, sub {
+          $ok->();
+          undef $timer;
+        };
+      });
+    })->then (sub {
       $stderr =~ /^pid=([0-9]+)$/m;
       my $pid = $1;
       test {
