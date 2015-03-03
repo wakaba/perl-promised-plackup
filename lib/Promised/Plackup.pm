@@ -186,7 +186,16 @@ sub start ($) {
   $self->{start_pid} = $$;
   return $cmd->run->then (sub {
     if ($cmd->running) {
-      return _wait_server $self->get_hostname, $self->get_port, $self->start_timeout, $cmd;
+      return (_wait_server $self->get_hostname, $self->get_port, $self->start_timeout, $cmd)->catch (sub {
+        my $error = $_[0];
+        return $cmd->wait->then (sub {
+          if ($_[0]->exit_code == 0) {
+            die $error;
+          } else {
+            die "$error: $_[0]";
+          }
+        }, sub { die "$error: $_[0]" });
+      });
     } else {
       return $cmd->wait->then (sub { die "Server failed to start: $_[0]" });
     }
