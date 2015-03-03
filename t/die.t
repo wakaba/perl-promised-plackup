@@ -69,6 +69,70 @@ test {
   });
 } n => 2;
 
+test {
+  my $c = shift;
+  my $cmd = Promised::Command->new (['perl', '-e', q{
+    use AnyEvent;
+    use Promised::Plackup;
+    our $server = Promised::Plackup->new;
+    $server->set_app_code (q{return sub { };});
+    my $cv = AE::cv;
+    $server->start->then (sub {
+      warn "\npid=@{[$server->_cmd->pid]}\n";
+      $cv->send;
+    }, sub {
+      exit 1;
+    });
+    $cv->recv;
+  }]);
+  $cmd->stderr (\my $stderr);
+  $cmd->run->then (sub {
+    return $cmd->wait->then (sub {
+      my $run = $_[0];
+      test {
+        is $run->exit_code, 0, 'exit code';
+      } $c;
+      return Promise->new (sub {
+        my ($ok, $ng) = @_;
+        my $time = 0;
+        my $timer; $timer = AE::timer 0, 0.5, sub {
+          if (defined $stderr and $stderr =~ /^pid=[0-9]+$/m) {
+            $ok->();
+            undef $timer;
+          } else {
+            $time += 0.5;
+            if ($time > 30) {
+              $ng->("timeout");
+              undef $timer;
+            }
+          }
+        };
+      });
+    });
+  })->then (sub {
+    return Promise->new (sub {
+      my ($ok) = @_;
+      my $timer; $timer = AE::timer 0.5, 0, sub {
+        $ok->();
+        undef $timer;
+      };
+    });
+  })->then (sub {
+    $stderr =~ /^pid=([0-9]+)$/m;
+    my $pid = $1;
+    test {
+      like $stderr, qr{is to be destroyed while the command \(plackup\) is still running};
+      ok not (kill 0, $pid), "$pid terminated";
+    } $c;
+  })->catch (sub {
+    warn $_[0];
+    test { ok 0 } $c;
+  })->then (sub {
+    done $c;
+    undef $c;
+  });
+} n => 3, name => 'x';
+
 for my $signal (qw(INT TERM QUIT)) {
 for my $server (undef, 'Starlet', 'Twiggy::Prefork') {
   test {
