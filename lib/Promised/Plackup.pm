@@ -4,6 +4,7 @@ use warnings;
 our $VERSION = '3.0';
 use AnyEvent;
 use Promised::Command;
+use Promised::Command::Signals;
 
 sub new ($) {
   return bless {options => {}}, $_[0];
@@ -114,7 +115,11 @@ sub _cmd ($) {
     $cmd->stdout ($self->stdout);
     $cmd->stderr ($self->stderr);
     my $stop = $self->_stop_signal;
-    $cmd->propagate_signal ([[INT => $stop], [TERM => $stop], [QUIT => $stop]]);
+    my $stop_code = sub {
+      return $self->stop;
+    };
+    $self->{signal}->{$_} = Promised::Command::Signals->add_handler
+        ($_ => $stop_code) for qw(INT TERM QUIT);
     $cmd;
   };
 } # _cmd
@@ -203,11 +208,10 @@ sub stop ($) {
   my $self = $_[0];
   my $cmd = $_[0]->_cmd;
   return $cmd->send_signal ($self->_stop_signal)->then (sub {
-    #my $timer; $timer = AE::timer 60, 0, sub {
-    #  $cmd->send_signal ('KILL')->then (sub { undef $timer });
-    #};
-    return $cmd->wait; #->then (sub { undef $timer });
-  })->catch (sub {
+    return $cmd->wait;
+  })->then (sub {
+    delete $self->{signal};
+  }, sub {
     die $_[0] if $cmd->running;
   });
 } # stop

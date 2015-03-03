@@ -47,6 +47,14 @@ test {
       });
     });
   })->then (sub {
+    return Promise->new (sub {
+      my ($ok) = @_;
+      my $timer; $timer = AE::timer 0.5, 0, sub {
+        $ok->();
+        undef $timer;
+      };
+    });
+  })->then (sub {
     $stderr =~ /^pid=([0-9]+)$/m;
     my $pid = $1;
     test {
@@ -62,7 +70,7 @@ test {
 } n => 2;
 
 for my $signal (qw(INT TERM QUIT)) {
-for my $server (undef, 'Starlet') {
+for my $server (undef, 'Starlet', 'Twiggy::Prefork') {
   test {
     my $c = shift;
     my $cmd = Promised::Command->new (['perl', '-e', q{
