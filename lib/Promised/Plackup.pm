@@ -114,12 +114,12 @@ sub _cmd ($) {
     $cmd->stdin ($self->stdin);
     $cmd->stdout ($self->stdout);
     $cmd->stderr ($self->stderr);
-    my $stop = $self->_stop_signal;
     my $stop_code = sub {
       return $self->stop;
     };
     $self->{signal}->{$_} = Promised::Command::Signals->add_handler
         ($_ => $stop_code) for qw(INT TERM QUIT);
+    $cmd->signal_before_destruction ($self->_stop_signal);
     $cmd;
   };
 } # _cmd
