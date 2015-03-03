@@ -206,13 +206,15 @@ sub _stop_signal ($) {
 
 sub stop ($) {
   my $self = $_[0];
-  my $cmd = $_[0]->_cmd;
+  return Promise->resolve if not defined $self->{cmd};
+  my $cmd = $self->{cmd};
   return $cmd->send_signal ($self->_stop_signal)->then (sub {
     return $cmd->wait;
+  })->catch (sub {
+    die $_[0] if $cmd->running;
   })->then (sub {
     delete $self->{signal};
-  }, sub {
-    die $_[0] if $cmd->running;
+    delete $self->{cmd};
   });
 } # stop
 

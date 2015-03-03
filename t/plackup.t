@@ -234,6 +234,18 @@ test {
     ->then (sub { done $c; undef $c });
 } n => 2, name => 'envs';
 
+test {
+  my $c = shift;
+  my $plackup = Promised::Plackup->new;
+  $plackup->stop->then (sub {
+    test {
+      ok 1;
+    } $c;
+    done $c;
+    undef $c;
+  });
+} n => 1, name => 'stop before start';
+
 run_tests;
 
 =head1 LICENSE
