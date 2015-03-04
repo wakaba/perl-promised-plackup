@@ -72,7 +72,7 @@ the C<plackup> command.
 
 This method must be invoked before the C<start> method is invoked.
 
-=item $server->server ($server_module)
+=item $server->set_server ($server_module)
 
 Set the server module used by the C<plackup> command, such as
 C<Starlet> or C<Twiggy::Prefork>.  It is equivalent to the C<--server>
