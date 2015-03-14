@@ -4,7 +4,7 @@ Pod::Text~3.18
 HTTP::Status~6.03
 Starman~0.4011
 IO::HTML~1.001
-Encode~2.71
+Encode~2.72
 HTTP::Headers~6.05
 Data::Dump~1.22
 HTTP::Tiny~0.054
