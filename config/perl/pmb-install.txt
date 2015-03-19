@@ -11,7 +11,7 @@ HTTP::Tiny~0.054
 CPAN::Meta~2.150001
 HTTP::Daemon~6.01
 Module::Build~0.4211
-List::MoreUtils~0.407
+List::MoreUtils~0.408
 Devel::StackTrace~2.00
 ExtUtils::ParseXS~3.24
 HTTP::Body~1.22
@@ -20,7 +20,7 @@ POSIX::strftime::Compiler~0.41
 Compress::Raw::Bzip2~2.068
 Path::Class~0.35
 common::sense~3.73
-IO::Socket::Socks~0.66
+IO::Socket::Socks~0.67
 URI::Escape~3.31
 LWP::MediaTypes~6.02
 HTML::Entities~3.69
