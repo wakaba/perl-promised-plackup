@@ -188,7 +188,9 @@ sub start ($) {
     if ($cmd->running) {
       return (_wait_server $self->get_hostname, $self->get_port, $self->start_timeout, $cmd)->catch (sub {
         my $error = $_[0];
-        return $cmd->wait->then (sub {
+        return $self->stop->then (sub {
+          return $cmd->wait;
+        })->then (sub {
           if ($_[0]->exit_code == 0) {
             die $error;
           } else {
