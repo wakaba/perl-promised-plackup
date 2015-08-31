@@ -96,6 +96,14 @@ preserved.
 
 This method must be invoked before the C<start> method is invoked.
 
+=item $string = $server->wd
+
+=item $server->wd ($string)
+
+Get or set the working directory for the C<plackup> command as a byte
+string.  If the C<undef> value is specified, the current directory is
+used.
+
 =item $hashref = $server->envs
 
 Return the environment variables for the C<plackup> command as a

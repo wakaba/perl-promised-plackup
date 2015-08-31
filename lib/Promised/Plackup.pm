@@ -52,6 +52,13 @@ sub set_server ($$) {
   $_[0]->set_option ('--server' => $_[1]);
 } # set_server
 
+sub wd ($;$) {
+  if (@_ > 1) {
+    $_[0]->{wd} = $_[1];
+  }
+  return $_[0]->{wd}; # // undef
+} # wd
+
 sub envs ($) {
   return $_[0]->{envs} ||= {};
 } # envs
@@ -110,6 +117,7 @@ sub _cmd ($) {
       }
     }
     my $cmd = Promised::Command->new (\@cmd);
+    $cmd->wd ($self->wd);
     %{$cmd->envs} = %{$self->envs};
     $cmd->stdin ($self->stdin);
     $cmd->stdout ($self->stdout);
