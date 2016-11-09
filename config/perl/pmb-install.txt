@@ -1,6 +1,7 @@
 AnyEvent~7.13
 AnyEvent::HTTP~2.23
 AnyEvent::HTTP::Socks~0.05
+AnyEvent::Util
 Apache::LogFormat::Compiler~0.33
 Canary::Stability~2012
 Carp~1.38
@@ -39,7 +40,6 @@ HTTP::Cookies~6.01
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.18
-HTTP::Headers~6.11
 HTTP::Headers::Fast~0.20
 HTTP::Headers::Util~6.11
 HTTP::Message~6.11
@@ -70,7 +70,7 @@ Net::HTTP~6.09
 Net::HTTPS~6.09
 Net::SSLeay~1.78
 Net::Server~2.008
-OAuth::Lite::AuthMethod
+OAuth::Lite::Token
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -89,8 +89,8 @@ Starman~0.4014
 Stream::Buffered~0.03
 TAP::Harness::Env~3.36
 Term::ANSIColor~4.06
+Test::Builder~1.302062
 Test::Deep~1.124
-Test::More~1.302062
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.17
