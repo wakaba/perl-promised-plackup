@@ -44,8 +44,8 @@ HTTP::Message~6.11
 HTTP::MultiPartParser~0.01
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
+HTTP::Request~6.11
 HTTP::Request::Common~6.11
-HTTP::Response~6.11
 HTTP::Status~6.11
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -86,8 +86,8 @@ Starman~0.4014
 Stream::Buffered~0.03
 TAP::Harness::Env~3.36
 Term::ANSIColor~4.06
-Test::Builder~1.302062
 Test::Deep~1.124
+Test::More~1.302062
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.17
