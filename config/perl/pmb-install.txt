@@ -1,6 +1,7 @@
 AnyEvent~7.13
 AnyEvent::HTTP~2.23
 AnyEvent::HTTP::Socks~0.05
+AnyEvent::Util
 Apache::LogFormat::Compiler~0.33
 Canary::Stability~2012
 Carp~1.38
@@ -39,13 +40,13 @@ HTTP::Cookies~6.01
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.18
+HTTP::Headers~6.11
 HTTP::Headers::Fast~0.20
 HTTP::Headers::Util~6.11
 HTTP::Message~6.11
 HTTP::MultiPartParser~0.01
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request~6.11
 HTTP::Response~6.11
 HTTP::Status~6.11
 HTTP::Tiny~0.070
@@ -87,8 +88,8 @@ Starman~0.4014
 Stream::Buffered~0.03
 TAP::Harness::Env~3.36
 Term::ANSIColor~4.06
-Test::Builder~1.302067
 Test::Deep~1.124
+Test::More~1.302067
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.17
@@ -97,6 +98,7 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.71
+URI::Escape~3.31
 WWW::Form::UrlEncoded~0.23
 WWW::RobotRules~6.02
 XSLoader~0.24
