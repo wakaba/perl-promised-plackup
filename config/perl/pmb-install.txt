@@ -68,10 +68,9 @@ Module::Build~0.4220
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.09
-Net::HTTPS~6.09
 Net::SSLeay~1.78
 Net::Server~2.008
-OAuth::Lite::Token
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -91,8 +90,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.36
 TAP::Harness::Env~3.36
 Term::ANSIColor~4.06
+Test::Builder~1.302071
 Test::Deep~1.124
-Test::More~1.302067
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.17
