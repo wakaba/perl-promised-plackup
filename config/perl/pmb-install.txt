@@ -41,6 +41,7 @@ HTTP::Cookies~6.01
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.18
+HTTP::Headers~6.11
 HTTP::Headers::Fast~0.20
 HTTP::Headers::Util~6.11
 HTTP::Message~6.11
@@ -68,9 +69,10 @@ Module::Build~0.4220
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.12
+Net::HTTPS~6.12
 Net::SSLeay~1.80
 Net::Server~2.008
-OAuth::Lite::AuthMethod
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -87,7 +89,7 @@ Socket~2.024
 Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
-TAP::Harness::Env~3.36
+TAP::Harness~3.36
 Term::ANSIColor~4.06
 Test::Deep~1.126
 Test::More~1.302075
