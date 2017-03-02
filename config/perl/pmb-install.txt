@@ -1,7 +1,6 @@
 AnyEvent~7.13
 AnyEvent::HTTP~2.23
 AnyEvent::HTTP::Socks~0.05
-AnyEvent::Util
 Apache::LogFormat::Compiler~0.33
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -42,8 +41,8 @@ HTTP::Cookies~6.01
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.19
-HTTP::Headers~6.11
 HTTP::Headers::Fast~0.21
+HTTP::Headers::Util~6.11
 HTTP::Message~6.11
 HTTP::MultiPartParser~0.01
 HTTP::Negotiate~6.01
@@ -59,10 +58,10 @@ IO::Socket::Socks~0.73
 IPC::Signal~1.00
 JSON::MaybeXS~1.003009
 JSON::PP~2.27400
-LWP~6.21
+LWP~6.22
 LWP::MediaTypes~6.02
 LWP::Protocol::https~6.07
-LWP::UserAgent~6.21
+LWP::UserAgent~6.22
 List::MoreUtils~0.416
 MIME::Base64~3.15
 Module::Build~0.4220
@@ -89,10 +88,10 @@ Socket~2.024
 Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
-TAP::Harness::Env~3.36
+TAP::Harness~3.36
 Term::ANSIColor~4.06
 Test::Deep~1.126
-Test::More~1.302075
+Test::More~1.302078
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.17
@@ -102,7 +101,7 @@ Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.71
 URI::Escape~3.31
-WWW::Form::UrlEncoded~0.23
+WWW::Form::UrlEncoded~0.24
 WWW::RobotRules~6.02
 XSLoader~0.24
 common::sense~3.74
