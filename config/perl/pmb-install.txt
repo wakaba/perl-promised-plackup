@@ -1,7 +1,6 @@
 AnyEvent~7.13
 AnyEvent::HTTP~2.23
 AnyEvent::HTTP::Socks~0.05
-AnyEvent::Util
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -13,7 +12,7 @@ Class::Data::Accessor~0.04004
 Class::ErrorHandler~0.04
 Class::Inspector~1.31
 Cookie::Baker~0.07
-Cpanel::JSON::XS~3.0229
+Cpanel::JSON::XS~3.0230
 Crypt::OpenSSL::RSA~0.28
 Crypt::OpenSSL::Random~0.11
 Crypt::SSLeay~0.72
@@ -69,10 +68,9 @@ Module::Build~0.4220
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.13
-Net::HTTPS~6.13
 Net::SSLeay~1.80
 Net::Server~2.008
-OAuth::Lite::AuthMethod
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -102,7 +100,6 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.71
-URI::Escape~3.31
 WWW::Form::UrlEncoded~0.24
 WWW::RobotRules~6.02
 XSLoader~0.24
