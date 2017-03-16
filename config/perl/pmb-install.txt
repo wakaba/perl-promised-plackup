@@ -43,7 +43,7 @@ HTTP::Date~6.02
 HTTP::Entity::Parser~0.19
 HTTP::Headers~6.11
 HTTP::Headers::Fast~0.21
-HTTP::Message~6.11
+HTTP::Headers::Util~6.11
 HTTP::MultiPartParser~0.01
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
@@ -69,6 +69,7 @@ Module::Build~0.4220
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.13
+Net::HTTPS~6.13
 Net::SSLeay~1.80
 Net::Server~2.008
 OAuth::Lite::Token
