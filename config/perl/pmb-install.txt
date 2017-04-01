@@ -12,7 +12,7 @@ Class::Data::Accessor~0.04004
 Class::ErrorHandler~0.04
 Class::Inspector~1.31
 Cookie::Baker~0.07
-Cpanel::JSON::XS~3.0230
+Cpanel::JSON::XS~3.0231
 Crypt::OpenSSL::RSA~0.28
 Crypt::OpenSSL::Random~0.11
 Crypt::SSLeay~0.72
@@ -41,7 +41,6 @@ HTTP::Cookies~6.01
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.19
-HTTP::Headers~6.11
 HTTP::Headers::Fast~0.21
 HTTP::Message~6.11
 HTTP::MultiPartParser~0.01
@@ -63,16 +62,16 @@ LWP~6.24
 LWP::MediaTypes~6.02
 LWP::Protocol::https~6.07
 LWP::UserAgent~6.24
-List::MoreUtils~0.416
+List::MoreUtils~0.418
 MIME::Base64~3.15
-Module::Build~0.4220
+Module::Build~0.4222
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.13
 Net::HTTPS~6.13
-Net::SSLeay~1.80
+Net::SSLeay~1.81
 Net::Server~2.008
-OAuth::Lite::AuthMethod
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -92,8 +91,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.38
 TAP::Harness::Env~3.38
 Term::ANSIColor~4.06
-Test::Builder~1.302078
 Test::Deep~1.126
+Test::More~1.302078
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.17
@@ -104,5 +103,4 @@ UNIVERSAL::require~0.18
 URI~1.71
 WWW::Form::UrlEncoded~0.24
 WWW::RobotRules~6.02
-XSLoader~0.24
 common::sense~3.74
