@@ -1,7 +1,6 @@
 AnyEvent~7.13
 AnyEvent::HTTP~2.23
 AnyEvent::HTTP::Socks~0.05
-AnyEvent::Socket
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -63,7 +62,7 @@ LWP~6.25
 LWP::MediaTypes~6.02
 LWP::Protocol::https~6.07
 LWP::UserAgent~6.25
-List::MoreUtils~0.418
+List::MoreUtils~0.419
 MIME::Base64~3.15
 Module::Build~0.4222
 Module::Build::Tiny~0.039
@@ -89,7 +88,8 @@ Socket~2.024
 Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
-TAP::Harness::Env~3.38
+TAP::Harness~3.39
+TAP::Harness::Env~3.39
 Term::ANSIColor~4.06
 Test::Deep~1.126
 Test::More~1.302078
