@@ -42,12 +42,12 @@ HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.19
 HTTP::Headers::Fast~0.21
+HTTP::Headers::Util~6.11
 HTTP::Message~6.11
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.11
-HTTP::Response~6.11
 HTTP::Status~6.11
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -71,7 +71,7 @@ Net::HTTP~6.15
 Net::HTTPS~6.15
 Net::SSLeay~1.81
 Net::Server~2.008
-OAuth::Lite::Consumer
+OAuth::Lite::Token
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
