@@ -43,6 +43,7 @@ HTTP::Date~6.02
 HTTP::Entity::Parser~0.19
 HTTP::Headers~6.11
 HTTP::Headers::Fast~0.21
+HTTP::Headers::Util~6.11
 HTTP::Message~6.11
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
@@ -63,14 +64,13 @@ LWP::Protocol::https~6.07
 LWP::UserAgent~6.26
 List::MoreUtils~0.419
 MIME::Base64~3.15
-Module::Build~0.4222
+Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.16
-Net::HTTPS~6.16
 Net::SSLeay~1.81
 Net::Server~2.008
-OAuth::Lite::Consumer
+OAuth::Lite::Token
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
