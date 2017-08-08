@@ -1,7 +1,7 @@
 AnyEvent~7.14
 AnyEvent::HTTP~2.23
 AnyEvent::HTTP::Socks~0.05
-AnyEvent::Socket
+AnyEvent::Util
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -11,7 +11,7 @@ Class::Accessor~0.34
 Class::Accessor::Lite~0.08
 Class::Data::Accessor~0.04004
 Class::ErrorHandler~0.04
-Class::Inspector~1.31
+Class::Inspector~1.32
 Cookie::Baker~0.08
 Cpanel::JSON::XS~3.0237
 Crypt::OpenSSL::RSA~0.28
@@ -47,9 +47,6 @@ HTTP::Message~6.13
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request~6.13
-HTTP::Request::Common~6.13
-HTTP::Response~6.13
 HTTP::Status~6.13
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -73,7 +70,7 @@ Net::HTTP~6.16
 Net::HTTPS~6.16
 Net::SSLeay~1.81
 Net::Server~2.008
-OAuth::Lite::AuthMethod
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
