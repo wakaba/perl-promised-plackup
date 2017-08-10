@@ -47,6 +47,7 @@ HTTP::Message~6.13
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
+HTTP::Request~6.13
 HTTP::Request::Common~6.13
 HTTP::Response~6.13
 HTTP::Tiny~0.070
@@ -68,9 +69,8 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.16
-Net::HTTPS~6.16
 Net::SSLeay~1.81
-Net::Server~2.008
+Net::Server~2.009
 OAuth::Lite::Token
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
@@ -101,6 +101,7 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.72
+URI::Escape~3.31
 WWW::Form::UrlEncoded~0.24
 WWW::RobotRules~6.02
 common::sense~3.74
