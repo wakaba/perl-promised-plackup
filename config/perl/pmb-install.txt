@@ -41,13 +41,13 @@ HTTP::Cookies~6.04
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.20
-HTTP::Headers~6.13
 HTTP::Headers::Fast~0.21
-HTTP::Headers::Util~6.13
 HTTP::Message~6.13
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
+HTTP::Request~6.13
+HTTP::Request::Common~6.13
 HTTP::Status~6.13
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -69,10 +69,9 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.17
-Net::HTTPS~6.17
 Net::SSLeay~1.81
 Net::Server~2.009
-OAuth::Lite::AuthMethod
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -92,8 +91,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.39
 TAP::Harness::Env~3.39
 Term::ANSIColor~4.06
+Test::Builder~1.302096
 Test::Deep~1.127
-Test::More~1.302096
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
@@ -102,6 +101,7 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.72
+URI::Escape~3.31
 WWW::Form::UrlEncoded~0.24
 WWW::RobotRules~6.02
 XSLoader~0.24
