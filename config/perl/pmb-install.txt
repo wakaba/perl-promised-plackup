@@ -36,6 +36,7 @@ File::Temp~0.2304
 Filesys::Notify::Simple~0.12
 Getopt::Long~2.5
 HTML::Entities~3.69
+HTML::HeadParser~3.71
 HTML::Tagset~3.20
 HTTP::Cookies~6.04
 HTTP::Daemon~6.01
@@ -72,7 +73,7 @@ Net::HTTP~6.17
 Net::HTTPS~6.17
 Net::SSLeay~1.81
 Net::Server~2.009
-OAuth::Lite::Token
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -89,7 +90,6 @@ Socket~2.024
 Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
-TAP::Harness~3.39
 TAP::Harness::Env~3.39
 Term::ANSIColor~4.06
 Test::Deep~1.127
@@ -102,6 +102,7 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.72
+URI::Escape~3.31
 WWW::Form::UrlEncoded~0.24
 WWW::RobotRules~6.02
 XSLoader~0.24
