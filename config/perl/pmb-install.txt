@@ -1,7 +1,6 @@
 AnyEvent~7.14
 AnyEvent::HTTP~2.23
 AnyEvent::HTTP::Socks~0.05
-AnyEvent::Socket
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -48,7 +47,6 @@ HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.13
-HTTP::Response~6.13
 HTTP::Status~6.13
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -70,10 +68,9 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.17
-Net::HTTPS~6.17
 Net::SSLeay~1.82
 Net::Server~2.009
-OAuth::Lite::Token
+OAuth::Lite::AuthMethod
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -93,8 +90,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.39
 TAP::Harness::Env~3.39
 Term::ANSIColor~4.06
+Test::Builder~1.302106
 Test::Deep~1.127
-Test::More~1.302106
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
