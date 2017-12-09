@@ -19,7 +19,7 @@ Crypt::SSLeay~0.72
 Data::Dump~1.23
 Devel::StackTrace~2.03
 Devel::StackTrace::AsHTML~0.15
-Digest::SHA~5.98
+Digest::SHA~6.00
 Digest::SHA1~2.13
 Encode~2.93
 Encode::Locale~1.05
@@ -42,12 +42,13 @@ HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.20
 HTTP::Headers::Fast~0.21
-HTTP::Headers::Util~6.13
 HTTP::Message~6.13
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
+HTTP::Request~6.13
 HTTP::Response~6.13
+HTTP::Status~6.13
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
 IO::HTML~1.001
@@ -57,10 +58,10 @@ IO::Socket::Socks~0.74
 IPC::Signal~1.00
 JSON::MaybeXS~1.003009
 JSON::PP~2.97000
-LWP~6.29
+LWP~6.30
 LWP::MediaTypes~6.02
 LWP::Protocol::https~6.07
-LWP::UserAgent~6.29
+LWP::UserAgent~6.30
 List::MoreUtils~0.426
 List::MoreUtils::XS~0.426
 MIME::Base64~3.15
@@ -68,7 +69,6 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.17
-Net::HTTPS~6.17
 Net::SSLeay~1.82
 Net::Server~2.009
 OAuth::Lite::Consumer
@@ -91,8 +91,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.39
 TAP::Harness::Env~3.39
 Term::ANSIColor~4.06
+Test::Builder~1.302120
 Test::Deep~1.127
-Test::More~1.302120
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
