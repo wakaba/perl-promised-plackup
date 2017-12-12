@@ -1,6 +1,7 @@
 AnyEvent~7.14
 AnyEvent::HTTP~2.23
 AnyEvent::HTTP::Socks~0.05
+AnyEvent::Util
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -34,7 +35,6 @@ File::ShareDir::Install~0.11
 File::Temp~0.2304
 Filesys::Notify::Simple~0.12
 Getopt::Long~2.5
-HTML::Entities~3.69
 HTML::HeadParser~3.71
 HTML::Tagset~3.20
 HTTP::Cookies~6.04
@@ -42,12 +42,12 @@ HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.20
 HTTP::Headers::Fast~0.21
+HTTP::Headers::Util~6.13
 HTTP::Message~6.13
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.13
-HTTP::Response~6.13
 HTTP::Status~6.13
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -58,11 +58,11 @@ IO::Socket::Socks~0.74
 IPC::Signal~1.00
 JSON::MaybeXS~1.003009
 JSON::PP~2.97000
-LWP~6.30
+LWP~6.31
 LWP::MediaTypes~6.02
 LWP::Protocol::https~6.07
-LWP::UserAgent~6.30
-List::MoreUtils~0.426
+LWP::UserAgent~6.31
+List::MoreUtils~0.428
 List::MoreUtils::XS~0.426
 MIME::Base64~3.15
 Module::Build~0.4224
