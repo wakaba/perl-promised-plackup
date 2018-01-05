@@ -41,13 +41,13 @@ HTTP::Cookies~6.04
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.20
-HTTP::Headers~6.14
 HTTP::Headers::Fast~0.21
 HTTP::Message~6.14
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.14
+HTTP::Request::Common~6.14
 HTTP::Status~6.14
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -69,7 +69,6 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.17
-Net::HTTPS~6.17
 Net::SSLeay~1.82
 Net::Server~2.009
 OAuth::Lite::AuthMethod
