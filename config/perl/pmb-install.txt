@@ -41,7 +41,6 @@ HTTP::Cookies~6.04
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.20
-HTTP::Headers~6.14
 HTTP::Headers::Fast~0.21
 HTTP::Message~6.14
 HTTP::MultiPartParser~0.02
@@ -49,6 +48,7 @@ HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.14
 HTTP::Request::Common~6.14
+HTTP::Response~6.14
 HTTP::Status~6.14
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -86,7 +86,7 @@ Scalar::Util~1.49
 Scope::Guard~0.21
 Server::Starter~0.33
 Signal::Mask~0.008
-Socket~2.025
+Socket~2.027
 Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
