@@ -21,7 +21,7 @@ Devel::StackTrace~2.03
 Devel::StackTrace::AsHTML~0.15
 Digest::SHA~6.01
 Digest::SHA1~2.13
-Encode~2.94
+Encode~2.95
 Encode::Locale~1.05
 Exporter::Lite~0.08
 Exporter::Tiny~1.000000
@@ -42,12 +42,11 @@ HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.20
 HTTP::Headers::Fast~0.21
-HTTP::Headers::Util~6.14
 HTTP::Message~6.14
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request~6.14
+HTTP::Request::Common~6.14
 HTTP::Status~6.14
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -69,7 +68,6 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20160104
 Net::HTTP~6.17
-Net::HTTPS~6.17
 Net::SSLeay~1.84
 Net::Server~2.009
 OAuth::Lite::Consumer
@@ -89,7 +87,6 @@ Socket~2.027
 Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
-TAP::Harness~3.39
 TAP::Harness::Env~3.39
 Term::ANSIColor~4.06
 Test::Deep~1.127
