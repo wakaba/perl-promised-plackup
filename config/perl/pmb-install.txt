@@ -46,8 +46,8 @@ HTTP::Message~6.14
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
+HTTP::Request~6.14
 HTTP::Request::Common~6.14
-HTTP::Status~6.14
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
 IO::HTML~1.001
@@ -70,7 +70,7 @@ Mozilla::CA~20160104
 Net::HTTP~6.17
 Net::SSLeay~1.84
 Net::Server~2.009
-OAuth::Lite::Consumer
+OAuth::Lite::AuthMethod
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -87,6 +87,7 @@ Socket~2.027
 Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
+TAP::Harness~3.39
 TAP::Harness::Env~3.39
 Term::ANSIColor~4.06
 Test::Deep~1.127
