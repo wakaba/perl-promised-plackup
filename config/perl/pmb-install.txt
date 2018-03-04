@@ -1,7 +1,6 @@
 AnyEvent~7.14
 AnyEvent::HTTP~2.23
 AnyEvent::HTTP::Socks~0.05
-AnyEvent::Socket
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -36,20 +35,18 @@ File::Temp~0.2304
 Filesys::Notify::Simple~0.12
 Getopt::Long~2.5
 HTML::Entities~3.69
-HTML::HeadParser~3.71
 HTML::Tagset~3.20
 HTTP::Cookies~6.04
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
-HTTP::Headers~6.14
 HTTP::Headers::Fast~0.21
-HTTP::Headers::Util~6.14
 HTTP::Message~6.14
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.14
+HTTP::Request::Common~6.14
 HTTP::Status~6.14
 HTTP::Tiny~0.070
 Hash::MultiValue~0.16
@@ -74,7 +71,7 @@ Net::HTTP~6.17
 Net::HTTPS~6.17
 Net::SSLeay~1.84
 Net::Server~2.009
-OAuth::Lite::Token
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -94,8 +91,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.41
 TAP::Harness::Env~3.41
 Term::ANSIColor~4.06
-Test::Builder~1.302125
 Test::Deep~1.127
+Test::More~1.302125
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
@@ -104,6 +101,7 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.73
+URI::Escape~3.31
 WWW::Form::UrlEncoded~0.24
 WWW::RobotRules~6.02
 XSLoader~0.24
