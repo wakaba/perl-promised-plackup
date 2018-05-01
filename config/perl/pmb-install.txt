@@ -14,7 +14,7 @@ Class::Inspector~1.32
 Cookie::Baker~0.09
 Cpanel::JSON::XS~4.02
 Crypt::OpenSSL::Guess~0.11
-Crypt::OpenSSL::RSA~0.28
+Crypt::OpenSSL::RSA~0.30
 Crypt::OpenSSL::Random~0.15
 Crypt::SSLeay~0.72
 Data::Dump~1.23
@@ -70,10 +70,9 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.17
-Net::HTTPS~6.17
 Net::SSLeay~1.85
 Net::Server~2.009
-OAuth::Lite::Token
+OAuth::Lite::AuthMethod
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -93,8 +92,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
+Test::Builder~1.302136
 Test::Deep~1.128
-Test::More~1.302136
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
