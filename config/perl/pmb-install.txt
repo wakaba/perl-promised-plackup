@@ -32,16 +32,16 @@ ExtUtils::InstallPaths~0.012
 File::Listing~6.04
 File::ShareDir~1.116
 File::ShareDir::Install~0.13
-File::Temp~0.2306
+File::Temp~0.2308
 Filesys::Notify::Simple~0.13
 Getopt::Long~2.5
 HTML::Entities~3.69
-HTML::HeadParser~3.71
 HTML::Tagset~3.20
 HTTP::Cookies~6.04
 HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
+HTTP::Headers~6.18
 HTTP::Headers::Fast~0.21
 HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
@@ -72,7 +72,7 @@ Net::HTTP~6.18
 Net::HTTPS~6.18
 Net::SSLeay~1.85
 Net::Server~2.009
-OAuth::Lite::Token
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -89,6 +89,7 @@ Socket~2.027
 Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
+TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
 Test::Builder~1.302136
@@ -101,7 +102,6 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.74
-URI::Escape~3.31
 WWW::Form::UrlEncoded~0.24
 WWW::RobotRules~6.02
 XSLoader~0.24
