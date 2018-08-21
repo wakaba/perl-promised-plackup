@@ -69,6 +69,7 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.18
+Net::HTTPS~6.18
 Net::SSLeay~1.85
 Net::Server~2.009
 OAuth::Lite::AuthMethod
