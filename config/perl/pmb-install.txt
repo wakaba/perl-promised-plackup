@@ -47,6 +47,7 @@ HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
+HTTP::Request~6.18
 HTTP::Response~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
