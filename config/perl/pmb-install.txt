@@ -47,7 +47,7 @@ HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request~6.18
+HTTP::Request::Common~6.18
 HTTP::Response~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
@@ -73,7 +73,7 @@ Net::HTTP~6.18
 Net::HTTPS~6.18
 Net::SSLeay~1.85
 Net::Server~2.009
-OAuth::Lite::Consumer
+OAuth::Lite::AuthMethod
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -91,10 +91,9 @@ Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
 TAP::Harness~3.42
-TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
+Test::Builder~1.302140
 Test::Deep~1.128
-Test::More~1.302140
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
@@ -103,6 +102,7 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.74
+URI::Escape~3.31
 WWW::Form::UrlEncoded~0.24
 WWW::RobotRules~6.02
 XSLoader~0.24
