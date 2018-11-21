@@ -44,9 +44,11 @@ HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
 HTTP::Headers~6.18
 HTTP::Headers::Fast~0.21
+HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
+HTTP::Request~6.18
 HTTP::Request::Common~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
@@ -69,10 +71,9 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.18
-Net::HTTPS~6.18
 Net::SSLeay~1.85
 Net::Server~2.009
-OAuth::Lite::Consumer
+OAuth::Lite::AuthMethod
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -92,8 +93,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
-Test::Builder~1.302140
 Test::Deep~1.128
+Test::More~1.302140
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
