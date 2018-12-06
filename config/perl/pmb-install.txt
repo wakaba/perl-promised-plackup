@@ -1,7 +1,6 @@
 AnyEvent~7.14
 AnyEvent::HTTP~2.24
 AnyEvent::HTTP::Socks~0.05
-AnyEvent::Socket
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -44,11 +43,12 @@ HTTP::Daemon~6.01
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
 HTTP::Headers::Fast~0.21
-HTTP::Headers::Util~6.18
 HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
+HTTP::Request~6.18
+HTTP::Request::Common~6.18
 HTTP::Response~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
@@ -59,7 +59,7 @@ IO::Socket::SSL~2.060
 IO::Socket::Socks~0.74
 IPC::Signal~1.00
 JSON::MaybeXS~1.004000
-JSON::PP~2.97001
+JSON::PP~4.00
 LWP~6.36
 LWP::MediaTypes~6.02
 LWP::Protocol::https~6.07
@@ -71,7 +71,6 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.18
-Net::HTTPS~6.18
 Net::SSLeay~1.85
 Net::Server~2.009
 OAuth::Lite::AuthMethod
@@ -94,7 +93,7 @@ Stream::Buffered~0.03
 TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
-Test::Builder~1.302140
+Test::Builder~1.302141
 Test::Deep~1.128
 Test::Requires~0.10
 Test::SharedFork~0.35
