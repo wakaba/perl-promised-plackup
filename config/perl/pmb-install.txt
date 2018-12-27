@@ -48,8 +48,8 @@ HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request::Common~6.18
-HTTP::Status~6.18
+HTTP::Request~6.18
+HTTP::Response~6.18
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
 IO::HTML~1.001
@@ -70,6 +70,7 @@ Module::Build~0.4224
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.18
+Net::HTTPS~6.18
 Net::SSLeay~1.85
 Net::Server~2.009
 OAuth::Lite::Token
