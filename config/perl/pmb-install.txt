@@ -1,7 +1,6 @@
 AnyEvent~7.14
 AnyEvent::HTTP~2.24
 AnyEvent::HTTP::Socks~0.05
-AnyEvent::Util
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -45,12 +44,13 @@ HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
 HTTP::Headers~6.18
 HTTP::Headers::Fast~0.21
+HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.18
+HTTP::Request::Common~6.18
 HTTP::Response~6.18
-HTTP::Status~6.18
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
 IO::HTML~1.001
@@ -74,7 +74,7 @@ Net::HTTP~6.18
 Net::HTTPS~6.18
 Net::SSLeay~1.85
 Net::Server~2.009
-OAuth::Lite::Token
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -104,6 +104,7 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.76
+URI::Escape~3.31
 WWW::Form::UrlEncoded~0.25
 WWW::RobotRules~6.02
 XSLoader~0.24
