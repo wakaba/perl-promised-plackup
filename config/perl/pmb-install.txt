@@ -12,7 +12,7 @@ Class::Data::Accessor~0.04004
 Class::ErrorHandler~0.04
 Class::Inspector~1.32
 Cookie::Baker~0.10
-Cpanel::JSON::XS~4.08
+Cpanel::JSON::XS~4.09
 Crypt::OpenSSL::Guess~0.11
 Crypt::OpenSSL::RSA~0.31
 Crypt::OpenSSL::Random~0.15
@@ -93,8 +93,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
+Test::Builder~1.302162
 Test::Deep~1.128
-Test::More~1.302162
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
@@ -103,6 +103,7 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.76
+URI::Escape~3.31
 WWW::Form::UrlEncoded~0.25
 WWW::RobotRules~6.02
 XSLoader~0.24
