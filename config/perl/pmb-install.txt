@@ -12,7 +12,7 @@ Class::Data::Accessor~0.04004
 Class::ErrorHandler~0.04
 Class::Inspector~1.32
 Cookie::Baker~0.10
-Cpanel::JSON::XS~4.10
+Cpanel::JSON::XS~4.11
 Crypt::OpenSSL::Guess~0.11
 Crypt::OpenSSL::RSA~0.31
 Crypt::OpenSSL::Random~0.15
@@ -48,7 +48,8 @@ HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request~6.18
+HTTP::Request::Common~6.18
+HTTP::Status~6.18
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
 IO::HTML~1.001
@@ -90,7 +91,6 @@ Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
 TAP::Harness~3.42
-TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
 Test::Builder~1.302162
 Test::Deep~1.128
