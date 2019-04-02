@@ -39,10 +39,9 @@ HTML::Entities~3.69
 HTML::HeadParser~3.71
 HTML::Tagset~3.20
 HTTP::Cookies~6.04
-HTTP::Daemon~6.01
+HTTP::Daemon~6.04
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
-HTTP::Headers~6.18
 HTTP::Headers::Fast~0.21
 HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
