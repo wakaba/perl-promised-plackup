@@ -4,7 +4,7 @@ AnyEvent::HTTP::Socks~0.05
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
-Canary::Stability~2012
+Canary::Stability~2013
 Carp~1.50
 Class::Accessor~0.51
 Class::Accessor::Lite~0.08
@@ -43,11 +43,11 @@ HTTP::Daemon~6.04
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
 HTTP::Headers::Fast~0.22
-HTTP::Headers::Util~6.18
 HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
+HTTP::Request~6.18
 HTTP::Request::Common~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
@@ -70,6 +70,7 @@ Module::Build~0.4229
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.18
+Net::HTTPS~6.18
 Net::SSLeay~1.85
 Net::Server~2.009
 OAuth::Lite::AuthMethod
