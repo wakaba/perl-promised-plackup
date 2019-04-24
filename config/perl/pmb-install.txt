@@ -36,12 +36,12 @@ File::Temp~0.2309
 Filesys::Notify::Simple~0.13
 Getopt::Long~2.5
 HTML::Entities~3.69
-HTML::HeadParser~3.71
 HTML::Tagset~3.20
 HTTP::Cookies~6.04
 HTTP::Daemon~6.04
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
+HTTP::Headers~6.18
 HTTP::Headers::Fast~0.22
 HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
@@ -69,7 +69,6 @@ Module::Build~0.4229
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.18
-Net::HTTPS~6.18
 Net::SSLeay~1.85
 Net::Server~2.009
 OAuth::Lite::AuthMethod
@@ -94,6 +93,7 @@ TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
 Test::Builder~1.302162
 Test::Deep~1.128
+Test::Needs~0.002006
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
