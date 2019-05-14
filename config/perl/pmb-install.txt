@@ -89,7 +89,6 @@ Socket~2.029
 Starlet~0.31
 Starman~0.4014
 Stream::Buffered~0.03
-TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
 Test::Builder~1.302164
