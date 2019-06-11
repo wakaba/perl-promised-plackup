@@ -12,7 +12,7 @@ Class::Data::Accessor~0.04004
 Class::ErrorHandler~0.04
 Class::Inspector~1.34
 Cookie::Baker~0.11
-Cpanel::JSON::XS~4.11
+Cpanel::JSON::XS~4.12
 Crypt::OpenSSL::Guess~0.11
 Crypt::OpenSSL::RSA~0.31
 Crypt::OpenSSL::Random~0.15
@@ -35,19 +35,18 @@ File::ShareDir::Install~0.13
 File::Temp~0.2309
 Filesys::Notify::Simple~0.13
 Getopt::Long~2.5
-HTML::Entities~3.69
 HTML::HeadParser~3.71
 HTML::Tagset~3.20
 HTTP::Cookies~6.04
 HTTP::Daemon~6.04
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
+HTTP::Headers~6.18
 HTTP::Headers::Fast~0.22
 HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
@@ -72,7 +71,7 @@ Net::HTTP~6.19
 Net::HTTPS~6.19
 Net::SSLeay~1.88
 Net::Server~2.009
-OAuth::Lite::Token
+OAuth::Lite::AuthMethod
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -92,8 +91,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
-Test::Builder~1.302164
 Test::Deep~1.128
+Test::More~1.302164
 Test::Needs~0.002006
 Test::Requires~0.10
 Test::SharedFork~0.35
@@ -103,6 +102,7 @@ Twiggy~0.1025
 Twiggy::Prefork~0.08
 UNIVERSAL::require~0.18
 URI~1.76
+URI::Escape~3.31
 WWW::Form::UrlEncoded~0.26
 WWW::RobotRules~6.02
 XSLoader~0.24
