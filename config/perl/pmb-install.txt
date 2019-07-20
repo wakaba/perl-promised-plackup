@@ -1,6 +1,7 @@
-AnyEvent~7.15
+AnyEvent~7.16
 AnyEvent::HTTP~2.24
 AnyEvent::HTTP::Socks~0.05
+AnyEvent::Util
 Apache::LogFormat::Compiler~0.35
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -10,7 +11,7 @@ Class::Accessor~0.51
 Class::Accessor::Lite~0.08
 Class::Data::Accessor~0.04004
 Class::ErrorHandler~0.04
-Class::Inspector~1.34
+Class::Inspector~1.36
 Cookie::Baker~0.11
 Cpanel::JSON::XS~4.12
 Crypt::OpenSSL::Guess~0.11
@@ -42,13 +43,12 @@ HTTP::Cookies~6.04
 HTTP::Daemon~6.04
 HTTP::Date~6.02
 HTTP::Entity::Parser~0.21
-HTTP::Headers~6.18
 HTTP::Headers::Fast~0.22
 HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Response~6.18
+HTTP::Request~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
@@ -72,7 +72,7 @@ Mozilla::CA~20180117
 Net::HTTP~6.19
 Net::SSLeay~1.88
 Net::Server~2.009
-OAuth::Lite::Consumer
+OAuth::Lite::AuthMethod
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -94,7 +94,6 @@ TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
 Test::Deep~1.128
 Test::More~1.302164
-Test::Needs~0.002006
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.19
