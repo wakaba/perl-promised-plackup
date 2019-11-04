@@ -12,7 +12,7 @@ Class::Data::Accessor~0.04004
 Class::ErrorHandler~0.04
 Class::Inspector~1.36
 Cookie::Baker~0.11
-Cpanel::JSON::XS~4.15
+Cpanel::JSON::XS~4.16
 Crypt::OpenSSL::Guess~0.11
 Crypt::OpenSSL::RSA~0.31
 Crypt::OpenSSL::Random~0.15
@@ -35,7 +35,6 @@ File::ShareDir::Install~0.13
 File::Temp~0.2309
 Filesys::Notify::Simple~0.13
 Getopt::Long~2.51
-HTML::Entities~3.69
 HTML::HeadParser~3.71
 HTML::Tagset~3.20
 HTTP::Cookies~6.05
@@ -47,8 +46,7 @@ HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request~6.18
-HTTP::Response~6.18
+HTTP::Request::Common~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
@@ -70,10 +68,9 @@ Module::Build~0.4229
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.19
-Net::HTTPS~6.19
 Net::SSLeay~1.88
 Net::Server~2.009
-OAuth::Lite::Consumer
+OAuth::Lite::Token
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -90,12 +87,10 @@ Socket~2.029
 Starlet~0.31
 Starman~0.4015
 Stream::Buffered~0.03
-TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
 Test::Deep~1.128
 Test::More~1.302168
-Test::Needs~0.002006
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.22
