@@ -48,6 +48,7 @@ HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.18
+HTTP::Request::Common~6.18
 HTTP::Response~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
@@ -72,7 +73,7 @@ Mozilla::CA~20180117
 Net::HTTP~6.19
 Net::SSLeay~1.88
 Net::Server~2.009
-OAuth::Lite::Token
+OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
@@ -94,7 +95,6 @@ TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
 Test::Deep~1.128
 Test::More~1.302170
-Test::Needs~0.002006
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.22
