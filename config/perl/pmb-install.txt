@@ -1,7 +1,6 @@
 AnyEvent~7.17
 AnyEvent::HTTP~2.24
 AnyEvent::HTTP::Socks~0.05
-AnyEvent::Util
 Apache::LogFormat::Compiler~0.36
 CPAN::Meta~2.150010
 CPAN::Meta::YAML~0.018
@@ -13,7 +12,7 @@ Class::Data::Accessor~0.04004
 Class::ErrorHandler~0.04
 Class::Inspector~1.36
 Cookie::Baker~0.11
-Cpanel::JSON::XS~4.17
+Cpanel::JSON::XS~4.18
 Crypt::OpenSSL::Guess~0.11
 Crypt::OpenSSL::RSA~0.31
 Crypt::OpenSSL::Random~0.15
@@ -45,11 +44,12 @@ HTTP::Date~6.05
 HTTP::Entity::Parser~0.22
 HTTP::Headers~6.18
 HTTP::Headers::Fast~0.22
+HTTP::Headers::Util~6.18
 HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request~6.18
+HTTP::Response~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
@@ -91,6 +91,7 @@ Socket~2.029
 Starlet~0.31
 Starman~0.4015
 Stream::Buffered~0.03
+TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~4.06
 Test::Builder~1.302170
