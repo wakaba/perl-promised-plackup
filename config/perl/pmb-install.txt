@@ -48,7 +48,7 @@ HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.18
-HTTP::Status~6.18
+HTTP::Request::Common~6.18
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
 IO::HTML~1.001
@@ -69,7 +69,6 @@ Module::Build~0.4229
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.19
-Net::HTTPS~6.19
 Net::SSLeay~1.88
 Net::Server~2.009
 OAuth::Lite::Token
@@ -91,8 +90,8 @@ Starman~0.4015
 Stream::Buffered~0.03
 TAP::Harness::Env~3.42
 Term::ANSIColor~5.00
+Test::Builder~1.302170
 Test::Deep~1.128
-Test::More~1.302170
 Test::Needs~0.002006
 Test::Requires~0.10
 Test::SharedFork~0.35
