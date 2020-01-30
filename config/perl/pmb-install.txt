@@ -48,8 +48,8 @@ HTTP::Message~6.18
 HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
-HTTP::Request~6.18
 HTTP::Request::Common~6.18
+HTTP::Response~6.18
 HTTP::Status~6.18
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
@@ -67,7 +67,7 @@ LWP::UserAgent~6.43
 List::MoreUtils~0.428
 List::MoreUtils::XS~0.428
 MIME::Base64~3.15
-Module::Build~0.4229
+Module::Build~0.4231
 Module::Build::Tiny~0.039
 Mozilla::CA~20180117
 Net::HTTP~6.19
@@ -77,7 +77,7 @@ OAuth::Lite::Consumer
 POSIX::strftime::Compiler~0.42
 Parallel::Prefork~0.18
 Path::Class~0.37
-Path::Tiny~0.110
+Path::Tiny~0.112
 Plack~1.0047
 Pod::Text~4.14
 Pod::Usage~1.69
@@ -93,8 +93,8 @@ Stream::Buffered~0.03
 TAP::Harness~3.42
 TAP::Harness::Env~3.42
 Term::ANSIColor~5.01
-Test::Builder~1.302171
 Test::Deep~1.128
+Test::More~1.302171
 Test::Requires~0.10
 Test::SharedFork~0.35
 Test::TCP~2.22
