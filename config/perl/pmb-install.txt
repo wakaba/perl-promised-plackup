@@ -49,7 +49,6 @@ HTTP::MultiPartParser~0.02
 HTTP::Negotiate~6.01
 HTTP::Parser::XS~0.17
 HTTP::Request~6.22
-HTTP::Request::Common~6.22
 HTTP::Status~6.22
 HTTP::Tiny~0.076
 Hash::MultiValue~0.16
